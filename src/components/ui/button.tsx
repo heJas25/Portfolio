@@ -18,6 +18,12 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        // Cyberpunk Gaming Variants
+        neon: "bg-gradient-primary text-primary-foreground neon-glow hover:scale-105 transform transition-all duration-300",
+        cyber: "bg-gradient-secondary text-secondary-foreground cyber-border hover:shadow-cyan-500/50 hover:scale-105",
+        holographic: "bg-gradient-holographic text-background border-0 hover:scale-110 transform transition-all duration-300",
+        terminal: "bg-card text-card-foreground cyber-border font-mono hover:text-primary",
+        gaming: "bg-gradient-cyber text-foreground border border-accent/50 hover:border-accent hover:shadow-lg hover:shadow-accent/25",
       },
       size: {
         default: "h-10 px-4 py-2",
