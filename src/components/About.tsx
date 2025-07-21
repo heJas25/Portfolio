@@ -1,13 +1,32 @@
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Heart, Coffee, Gamepad2, Sparkles, Code2, Palette } from 'lucide-react';
+import { Heart, Coffee, Gamepad2, Sparkles, Code2, Palette, Zap } from 'lucide-react';
 
 const skills = [
-  'React', 'TypeScript', 'Next.js', 'Three.js', 'Framer Motion',
-  'Tailwind CSS', 'Node.js', 'Python', 'Figma', 'Blender'
+  { name: 'React', level: 95, category: 'frontend' },
+  { name: 'TypeScript', level: 90, category: 'language' },
+  { name: 'Next.js', level: 88, category: 'frontend' },
+  { name: 'Three.js', level: 82, category: 'graphics' },
+  { name: 'Framer Motion', level: 85, category: 'animation' },
+  { name: 'Tailwind CSS', level: 92, category: 'styling' },
+  { name: 'Node.js', level: 78, category: 'backend' },
+  { name: 'Python', level: 75, category: 'language' },
+  { name: 'Figma', level: 88, category: 'design' },
+  { name: 'Blender', level: 70, category: 'graphics' }
 ];
+
+const categoryColors = {
+  frontend: 'border-primary/50 bg-primary/10 hover:bg-primary/20 hover:border-primary',
+  language: 'border-secondary/50 bg-secondary/10 hover:bg-secondary/20 hover:border-secondary',
+  graphics: 'border-accent/50 bg-accent/10 hover:bg-accent/20 hover:border-accent',
+  animation: 'border-neon-green/50 bg-neon-green/10 hover:bg-neon-green/20 hover:border-neon-green',
+  styling: 'border-neon-orange/50 bg-neon-orange/10 hover:bg-neon-orange/20 hover:border-neon-orange',
+  backend: 'border-cyber-blue/50 bg-cyber-blue/10 hover:bg-cyber-blue/20 hover:border-cyber-blue',
+  design: 'border-destructive/50 bg-destructive/10 hover:bg-destructive/20 hover:border-destructive'
+};
 
 const interests = [
   { icon: Gamepad2, label: 'Gaming', color: 'text-neon-green' },
@@ -18,7 +37,33 @@ const interests = [
   { icon: Heart, label: 'Anime', color: 'text-destructive' },
 ];
 
+// Typing animation hook
+const useTypingAnimation = (text: string, speed: number = 50) => {
+  const [displayText, setDisplayText] = useState('');
+  const [isComplete, setIsComplete] = useState(false);
+  
+  useEffect(() => {
+    let i = 0;
+    const timer = setInterval(() => {
+      if (i < text.length) {
+        setDisplayText(text.slice(0, i + 1));
+        i++;
+      } else {
+        setIsComplete(true);
+        clearInterval(timer);
+      }
+    }, speed);
+    
+    return () => clearInterval(timer);
+  }, [text, speed]);
+  
+  return { displayText, isComplete };
+};
+
 export const About = () => {
+  const skillsRef = useRef(null);
+  const isInView = useInView(skillsRef, { once: true, margin: "-100px" });
+  const { displayText } = useTypingAnimation("Frontend Developer • VTuber • Cyber Enthusiast", 100);
   return (
     <section className="py-20 px-6 relative">
       <div className="max-w-6xl mx-auto">
@@ -47,34 +92,92 @@ export const About = () => {
           >
             <Card className="cyber-border p-8">
               <div className="text-center mb-6">
-                <div className="w-32 h-32 mx-auto bg-gradient-holographic rounded-full flex items-center justify-center mb-4 animate-float">
+                <motion.div 
+                  className="w-32 h-32 mx-auto bg-gradient-holographic rounded-full flex items-center justify-center mb-4 animate-float"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   <Sparkles className="w-16 h-16 text-background" />
-                </div>
+                </motion.div>
                 <h3 className="text-2xl font-bold text-gradient-primary mb-2">Luna.exe</h3>
-                <p className="text-muted-foreground font-mono">Level 42 Frontend Wizard</p>
+                <div className="text-muted-foreground font-mono text-sm">
+                  {displayText}<span className="animate-pulse">|</span>
+                </div>
               </div>
 
               <div className="space-y-4 text-center">
-                <p className="text-foreground/90">
+                <motion.p 
+                  className="text-foreground/90"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  viewport={{ once: true }}
+                >
                   Hey there! I'm Luna, a passionate frontend developer with a love for creating 
                   immersive digital experiences. When I'm not coding, you'll find me streaming, 
                   creating digital art, or diving into the latest gaming adventures.
-                </p>
+                </motion.p>
                 
-                <div className="terminal-window">
+                <motion.div 
+                  className="terminal-window"
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  viewport={{ once: true }}
+                >
                   <div className="terminal-header">
                     <div className="terminal-dot bg-destructive"></div>
                     <div className="terminal-dot bg-neon-orange"></div>
-                    <div className="terminal-dot bg-neon-green"></div>
+                    <div className="terminal-dot bg-neon-green animate-pulse"></div>
                   </div>
-                  <div className="font-mono text-sm">
-                    <div className="text-neon-green">$ luna.getStats()</div>
-                    <div className="text-muted-foreground">→ Experience: 3+ years</div>
-                    <div className="text-muted-foreground">→ Projects completed: 50+</div>
-                    <div className="text-muted-foreground">→ Coffee consumed: ∞</div>
-                    <div className="text-primary">→ Currently: Available for work!</div>
+                  <div className="font-mono text-sm space-y-1">
+                    <motion.div 
+                      className="text-neon-green"
+                      initial={{ width: 0, opacity: 0 }}
+                      whileInView={{ width: "auto", opacity: 1 }}
+                      transition={{ delay: 0.7, duration: 0.8 }}
+                      viewport={{ once: true }}
+                    >
+                      $ luna.getStats()
+                    </motion.div>
+                    <motion.div 
+                      className="text-muted-foreground"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 1 }}
+                      viewport={{ once: true }}
+                    >
+                      → Experience: 3+ years
+                    </motion.div>
+                    <motion.div 
+                      className="text-muted-foreground"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 1.2 }}
+                      viewport={{ once: true }}
+                    >
+                      → Projects completed: 50+
+                    </motion.div>
+                    <motion.div 
+                      className="text-muted-foreground"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 1.4 }}
+                      viewport={{ once: true }}
+                    >
+                      → Coffee consumed: ∞
+                    </motion.div>
+                    <motion.div 
+                      className="text-primary"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 1.6 }}
+                      viewport={{ once: true }}
+                    >
+                      → Currently: Available for work!
+                    </motion.div>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </Card>
           </motion.div>
@@ -87,35 +190,112 @@ export const About = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            {/* Skills */}
-            <Card className="cyber-border p-6">
-              <h4 className="text-xl font-semibold mb-4 text-gradient-secondary flex items-center gap-2">
+            {/* Enhanced Skills Section */}
+            <Card className="cyber-border p-6 overflow-hidden relative">
+              <motion.h4 
+                className="text-xl font-semibold mb-6 text-gradient-secondary flex items-center gap-2"
+                initial={{ y: -20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                viewport={{ once: true }}
+              >
                 <Code2 className="w-5 h-5" />
                 Tech Stack
-              </h4>
-              <div className="flex flex-wrap gap-2">
+                <motion.div
+                  className="ml-auto text-xs bg-primary/20 px-2 py-1 rounded-full"
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <Zap className="w-3 h-3 inline mr-1" />
+                  {skills.length} skills
+                </motion.div>
+              </motion.h4>
+              
+              <div ref={skillsRef} className="grid grid-cols-2 gap-3">
                 {skills.map((skill, index) => (
                   <motion.div
-                    key={skill}
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ delay: index * 0.1 }}
-                    viewport={{ once: true }}
+                    key={skill.name}
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={isInView ? { scale: 1, rotate: 0 } : {}}
+                    transition={{ 
+                      delay: index * 0.1,
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15
+                    }}
+                    whileHover={{ 
+                      scale: 1.05,
+                      y: -2,
+                      transition: { duration: 0.2 }
+                    }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <Badge variant="outline" className="neon-glow hover:bg-primary/20">
-                      {skill}
-                    </Badge>
+                    <div className={`relative p-3 rounded-lg border transition-all duration-300 cursor-pointer group ${categoryColors[skill.category as keyof typeof categoryColors]}`}>
+                      {/* Holographic overlay effect */}
+                      <div className="absolute inset-0 bg-gradient-holographic opacity-0 group-hover:opacity-20 rounded-lg transition-opacity duration-300" />
+                      
+                      <div className="relative z-10">
+                        <div className="font-medium text-sm mb-1">{skill.name}</div>
+                        
+                        {/* Animated progress bar */}
+                        <div className="w-full bg-muted/30 rounded-full h-1.5 mb-1 overflow-hidden">
+                          <motion.div
+                            className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
+                            initial={{ width: 0 }}
+                            animate={isInView ? { width: `${skill.level}%` } : {}}
+                            transition={{ 
+                              delay: index * 0.1 + 0.5,
+                              duration: 1,
+                              ease: "easeOut"
+                            }}
+                          />
+                        </div>
+                        
+                        <div className="text-xs text-muted-foreground capitalize">
+                          {skill.category} • {skill.level}%
+                        </div>
+                      </div>
+                    </div>
                   </motion.div>
+                ))}
+              </div>
+              
+              {/* Floating particles effect */}
+              <div className="absolute inset-0 pointer-events-none">
+                {[...Array(6)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-1 h-1 bg-primary/30 rounded-full"
+                    style={{
+                      left: `${Math.random() * 100}%`,
+                      top: `${Math.random() * 100}%`
+                    }}
+                    animate={{
+                      y: [0, -20, 0],
+                      opacity: [0.3, 1, 0.3]
+                    }}
+                    transition={{
+                      duration: 2 + Math.random() * 2,
+                      repeat: Infinity,
+                      delay: Math.random() * 2
+                    }}
+                  />
                 ))}
               </div>
             </Card>
 
-            {/* Interests */}
+            {/* Enhanced Interests */}
             <Card className="cyber-border p-6">
-              <h4 className="text-xl font-semibold mb-4 text-gradient-accent flex items-center gap-2">
+              <motion.h4 
+                className="text-xl font-semibold mb-4 text-gradient-accent flex items-center gap-2"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                viewport={{ once: true }}
+              >
                 <Heart className="w-5 h-5" />
                 Interests
-              </h4>
+              </motion.h4>
               <div className="grid grid-cols-2 gap-4">
                 {interests.map((interest, index) => {
                   const Icon = interest.icon;
@@ -124,42 +304,111 @@ export const About = () => {
                       key={interest.label}
                       initial={{ y: 20, opacity: 0 }}
                       whileInView={{ y: 0, opacity: 1 }}
-                      transition={{ delay: index * 0.1 }}
+                      transition={{ delay: index * 0.1 + 0.4 }}
                       viewport={{ once: true }}
-                      className="flex items-center gap-3 p-3 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors"
+                      whileHover={{ 
+                        scale: 1.02,
+                        backgroundColor: "rgba(255, 255, 255, 0.05)",
+                        transition: { duration: 0.2 }
+                      }}
+                      className="flex items-center gap-3 p-3 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors cursor-pointer group"
                     >
-                      <Icon className={`w-5 h-5 ${interest.color}`} />
-                      <span className="font-medium">{interest.label}</span>
+                      <motion.div
+                        whileHover={{ rotate: 360, scale: 1.2 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <Icon className={`w-5 h-5 ${interest.color} group-hover:drop-shadow-lg`} />
+                      </motion.div>
+                      <span className="font-medium group-hover:text-foreground/90 transition-colors">
+                        {interest.label}
+                      </span>
                     </motion.div>
                   );
                 })}
               </div>
             </Card>
 
-            {/* XP Progress */}
-            <Card className="cyber-border p-6">
-              <h4 className="text-xl font-semibold mb-4 text-gradient-primary">Experience Points</h4>
+            {/* Enhanced XP Progress */}
+            <Card className="cyber-border p-6 relative overflow-hidden">
+              <motion.h4 
+                className="text-xl font-semibold mb-4 text-gradient-primary"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                viewport={{ once: true }}
+              >
+                Experience Points
+              </motion.h4>
               <div className="space-y-4">
-                <div>
-                  <div className="flex justify-between mb-2">
-                    <span className="text-sm font-medium">Frontend Development</span>
-                    <span className="text-sm text-primary">85%</span>
-                  </div>
-                  <div className="xp-bar"></div>
-                </div>
-                <div>
-                  <div className="flex justify-between mb-2">
-                    <span className="text-sm font-medium">3D Graphics</span>
-                    <span className="text-sm text-secondary">70%</span>
-                  </div>
-                  <div className="xp-bar" style={{ '--progress': '70%' } as any}></div>
-                </div>
-                <div>
-                  <div className="flex justify-between mb-2">
-                    <span className="text-sm font-medium">UI/UX Design</span>
-                    <span className="text-sm text-accent">90%</span>
-                  </div>
-                  <div className="xp-bar" style={{ '--progress': '90%' } as any}></div>
+                {[
+                  { skill: "Frontend Development", level: 85, color: "primary" },
+                  { skill: "3D Graphics", level: 70, color: "secondary" },
+                  { skill: "UI/UX Design", level: 90, color: "accent" }
+                ].map((item, index) => (
+                  <motion.div
+                    key={item.skill}
+                    initial={{ x: -50, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ delay: index * 0.2 + 0.6 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="flex justify-between mb-2">
+                      <span className="text-sm font-medium">{item.skill}</span>
+                      <motion.span 
+                        className={`text-sm text-${item.color}`}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: index * 0.2 + 1 }}
+                        viewport={{ once: true }}
+                      >
+                        {item.level}%
+                      </motion.span>
+                    </div>
+                    <div className="relative h-2 bg-muted/30 rounded-full overflow-hidden">
+                      <motion.div
+                        className={`h-full bg-gradient-to-r from-${item.color} to-${item.color}-glow rounded-full relative`}
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${item.level}%` }}
+                        transition={{ 
+                          delay: index * 0.2 + 0.8,
+                          duration: 1.5,
+                          ease: "easeOut"
+                        }}
+                        viewport={{ once: true }}
+                      >
+                        {/* Animated glow effect */}
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                          animate={{ x: ["-100%", "100%"] }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "linear",
+                            delay: index * 0.2 + 2
+                          }}
+                        />
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              
+              {/* Background matrix effect */}
+              <div className="absolute inset-0 opacity-5 pointer-events-none">
+                <div className="font-mono text-xs leading-tight">
+                  {Array.from({ length: 20 }, (_, i) => (
+                    <motion.div
+                      key={i}
+                      animate={{ opacity: [0, 1, 0] }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: Math.random() * 2
+                      }}
+                    >
+                      {Math.random().toString(36).substring(7)}
+                    </motion.div>
+                  ))}
                 </div>
               </div>
             </Card>
@@ -167,14 +416,24 @@ export const About = () => {
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.8 }}
               viewport={{ once: true }}
               className="text-center"
             >
-              <Button variant="gaming" size="lg">
-                <Sparkles className="w-5 h-5 mr-2" />
-                Let's Collaborate!
-              </Button>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button variant="gaming" size="lg" className="relative overflow-hidden group">
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-holographic opacity-0 group-hover:opacity-30"
+                    animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  />
+                  <Sparkles className="w-5 h-5 mr-2 relative z-10" />
+                  <span className="relative z-10">Let's Collaborate!</span>
+                </Button>
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>
