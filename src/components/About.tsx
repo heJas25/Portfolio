@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { TechPlanets } from '@/components/TechPlanets';
 import { Heart, Coffee, Gamepad2, Sparkles, Code2, Palette, Zap } from 'lucide-react';
 
 const skills = [
@@ -284,48 +285,18 @@ export const About = () => {
               </div>
             </Card>
 
-            {/* Enhanced Interests */}
-            <Card className="cyber-border p-6">
+            {/* Tech Planets */}
+            <Card className="cyber-border p-6 relative overflow-hidden">
               <motion.h4 
-                className="text-xl font-semibold mb-4 text-gradient-accent flex items-center gap-2"
+                className="text-xl font-semibold mb-4 text-gradient-secondary"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
+                transition={{ delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                <Heart className="w-5 h-5" />
-                Interests
+                Tech Universe
               </motion.h4>
-              <div className="grid grid-cols-2 gap-4">
-                {interests.map((interest, index) => {
-                  const Icon = interest.icon;
-                  return (
-                    <motion.div
-                      key={interest.label}
-                      initial={{ y: 20, opacity: 0 }}
-                      whileInView={{ y: 0, opacity: 1 }}
-                      transition={{ delay: index * 0.1 + 0.4 }}
-                      viewport={{ once: true }}
-                      whileHover={{ 
-                        scale: 1.02,
-                        backgroundColor: "rgba(255, 255, 255, 0.05)",
-                        transition: { duration: 0.2 }
-                      }}
-                      className="flex items-center gap-3 p-3 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors cursor-pointer group"
-                    >
-                      <motion.div
-                        whileHover={{ rotate: 360, scale: 1.2 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <Icon className={`w-5 h-5 ${interest.color} group-hover:drop-shadow-lg`} />
-                      </motion.div>
-                      <span className="font-medium group-hover:text-foreground/90 transition-colors">
-                        {interest.label}
-                      </span>
-                    </motion.div>
-                  );
-                })}
-              </div>
+              <TechPlanets />
             </Card>
 
             {/* Enhanced XP Progress */}

@@ -10,6 +10,7 @@ const navItems = [
   { id: 'services', label: 'Services', icon: Zap },
   { id: 'projects', label: 'Projects', icon: Code },
   { id: 'game', label: 'Game', icon: Gamepad2 },
+  { id: 'memory', label: 'Memory', icon: Gamepad2 },
   { id: 'gallery', label: 'Gallery', icon: Image },
   { id: 'contact', label: 'Contact', icon: Mail },
 ];

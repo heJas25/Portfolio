@@ -8,6 +8,7 @@ import { Experience } from '@/components/Experience';
 import { Services } from '@/components/Services';
 import { Projects } from '@/components/Projects';
 import { TypingGame } from '@/components/TypingGame';
+import { MemoryGame } from '@/components/MemoryGame';
 import { Gallery } from '@/components/Gallery';
 import { Contact } from '@/components/Contact';
 
@@ -57,6 +58,10 @@ const Index = () => {
       
       <div id="game">
         <TypingGame />
+      </div>
+      
+      <div id="memory">
+        <MemoryGame />
       </div>
       
       <div id="gallery">
