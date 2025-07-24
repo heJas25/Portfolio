@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Home, User, Code, Mail, Image } from 'lucide-react';
+import { Menu, X, Home, User, Code, Mail, Image, Briefcase, Zap, Gamepad2 } from 'lucide-react';
 
 const navItems = [
   { id: 'home', label: 'Home', icon: Home },
   { id: 'about', label: 'About Me', icon: User },
+  { id: 'experience', label: 'Experience', icon: Briefcase },
+  { id: 'services', label: 'Services', icon: Zap },
   { id: 'projects', label: 'Projects', icon: Code },
+  { id: 'game', label: 'Game', icon: Gamepad2 },
   { id: 'gallery', label: 'Gallery', icon: Image },
   { id: 'contact', label: 'Contact', icon: Mail },
 ];

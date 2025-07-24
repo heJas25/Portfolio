@@ -4,7 +4,10 @@ import { Scene3D } from '@/components/Scene3D';
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
 import { About } from '@/components/About';
+import { Experience } from '@/components/Experience';
+import { Services } from '@/components/Services';
 import { Projects } from '@/components/Projects';
+import { TypingGame } from '@/components/TypingGame';
 import { Gallery } from '@/components/Gallery';
 import { Contact } from '@/components/Contact';
 
@@ -40,8 +43,20 @@ const Index = () => {
         <About />
       </div>
       
+      <div id="experience">
+        <Experience />
+      </div>
+      
+      <div id="services">
+        <Services />
+      </div>
+      
       <div id="projects">
         <Projects />
+      </div>
+      
+      <div id="game">
+        <TypingGame />
       </div>
       
       <div id="gallery">
