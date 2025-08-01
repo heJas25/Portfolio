@@ -25,6 +25,7 @@ const Index = () => {
     <div className="relative min-h-screen">
       <ParticleField />
     
+
       <Navigation 
         activeSection={activeSection} 
         onSectionChange={scrollToSection} 
@@ -35,9 +36,9 @@ const Index = () => {
         <Hero onExplore={() => scrollToSection('about')} />
       </div>
       
-      <div id="about">
+      {/* <div id="about">
         <About />
-      </div>
+      </div>*/}
       
       <div id="experience">
         <Experience />
