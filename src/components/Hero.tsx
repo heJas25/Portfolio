@@ -28,7 +28,7 @@ export const Hero = ({ onExplore }: HeroProps) => {
         >
           <img 
             src={vtuberAvatar} 
-            alt="VTuber Avatar" 
+            alt=" Avatar" 
             className="w-48 h-48 mx-auto rounded-full neon-glow animate-float"
           />
         </motion.div>
@@ -40,7 +40,7 @@ export const Hero = ({ onExplore }: HeroProps) => {
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             <span className="glitch-text text-gradient-holographic" data-text="Luna.exe">
-              Luna.exe
+              Yasmine.exe
             </span>
           </h1>
           
@@ -51,7 +51,7 @@ export const Hero = ({ onExplore }: HeroProps) => {
               transition={{ delay: 0.5, duration: 2 }}
               className="inline-block overflow-hidden whitespace-nowrap"
             >
-              &gt; Frontend Developer • VTuber • Cyber Enthusiast_
+              &gt; Frontend Developer • App Devoloper • grafic designer _
             </motion.span>
           </div>
 
@@ -114,7 +114,7 @@ export const Hero = ({ onExplore }: HeroProps) => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.5, duration: 0.6, repeat: Infinity, repeatType: "reverse" }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-0  left-1/2 transform -translate-x-1/2"
         >
           <ArrowDown className="w-6 h-6 text-primary animate-bounce" />
         </motion.div>

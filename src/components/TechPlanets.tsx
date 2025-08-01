@@ -102,7 +102,7 @@ const TechPlanet = ({ language, index }: { language: any, index: number }) => {
         color="white"
         anchorX="center"
         anchorY="middle"
-        font="/fonts/JetBrainsMono-Bold.woff"
+        // font="/fonts/JetBrainsMono-Bold.woff"
       >
         {language.logo}
       </Text>

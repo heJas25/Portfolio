@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { ParticleField } from '@/components/ParticleField';
-import { Scene3D } from '@/components/Scene3D';
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
 import { About } from '@/components/About';
@@ -8,7 +7,6 @@ import { Experience } from '@/components/Experience';
 import { Services } from '@/components/Services';
 import { Projects } from '@/components/Projects';
 import { TypingGame } from '@/components/TypingGame';
-import { MemoryGame } from '@/components/MemoryGame';
 import { Gallery } from '@/components/Gallery';
 import { Contact } from '@/components/Contact';
 
@@ -25,18 +23,15 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen">
-      {/* Background Effects */}
       <ParticleField />
-      <Scene3D />
-      
-      {/* Navigation */}
+    
       <Navigation 
         activeSection={activeSection} 
         onSectionChange={scrollToSection} 
       />
       
       {/* Sections */}
-      <div id="home">
+      <div id="home" className="mt-28">
         <Hero onExplore={() => scrollToSection('about')} />
       </div>
       
@@ -48,10 +43,10 @@ const Index = () => {
         <Experience />
       </div>
       
-      <div id="services">
+      {/* <div id="services">
         <Services />
       </div>
-      
+       */}
       <div id="projects">
         <Projects />
       </div>
@@ -60,9 +55,7 @@ const Index = () => {
         <TypingGame />
       </div>
       
-      <div id="memory">
-        <MemoryGame />
-      </div>
+    
       
       <div id="gallery">
         <Gallery />
@@ -70,7 +63,7 @@ const Index = () => {
       
       <div id="contact">
         <Contact />
-      </div>
+      </div> 
     </div>
   );
 };

@@ -296,7 +296,7 @@ export const About = () => {
               >
                 Tech Universe
               </motion.h4>
-              <TechPlanets />
+              {/* <TechPlanets /> */}
             </Card>
 
             {/* Enhanced XP Progress */}
