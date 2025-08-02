@@ -36,9 +36,9 @@ const Index = () => {
         <Hero onExplore={() => scrollToSection('about')} />
       </div>
       
-      {/* <div id="about">
+      <div id="about">
         <About />
-      </div>*/}
+      </div>
       
       <div id="experience">
         <Experience />

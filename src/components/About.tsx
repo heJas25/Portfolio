@@ -9,14 +9,13 @@ import { Heart, Coffee, Gamepad2, Sparkles, Code2, Palette, Zap } from 'lucide-r
 const skills = [
   { name: 'React', level: 95, category: 'frontend' },
   { name: 'TypeScript', level: 90, category: 'language' },
-  { name: 'Next.js', level: 88, category: 'frontend' },
   { name: 'Three.js', level: 82, category: 'graphics' },
   { name: 'Framer Motion', level: 85, category: 'animation' },
   { name: 'Tailwind CSS', level: 92, category: 'styling' },
   { name: 'Node.js', level: 78, category: 'backend' },
   { name: 'Python', level: 75, category: 'language' },
   { name: 'Figma', level: 88, category: 'design' },
-  { name: 'Blender', level: 70, category: 'graphics' }
+
 ];
 
 const categoryColors = {
@@ -91,96 +90,7 @@ export const About = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <Card className="cyber-border p-8">
-              <div className="text-center mb-6">
-                <motion.div 
-                  className="w-32 h-32 mx-auto bg-gradient-holographic rounded-full flex items-center justify-center mb-4 animate-float"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <Sparkles className="w-16 h-16 text-background" />
-                </motion.div>
-                <h3 className="text-2xl font-bold text-gradient-primary mb-2">Luna.exe</h3>
-                <div className="text-muted-foreground font-mono text-sm">
-                  {displayText}<span className="animate-pulse">|</span>
-                </div>
-              </div>
-
-              <div className="space-y-4 text-center">
-                <motion.p 
-                  className="text-foreground/90"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  viewport={{ once: true }}
-                >
-                  Hey there! I'm Luna, a passionate frontend developer with a love for creating 
-                  immersive digital experiences. When I'm not coding, you'll find me streaming, 
-                  creating digital art, or diving into the latest gaming adventures.
-                </motion.p>
-                
-                <motion.div 
-                  className="terminal-window"
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="terminal-header">
-                    <div className="terminal-dot bg-destructive"></div>
-                    <div className="terminal-dot bg-neon-orange"></div>
-                    <div className="terminal-dot bg-neon-green animate-pulse"></div>
-                  </div>
-                  <div className="font-mono text-sm space-y-1">
-                    <motion.div 
-                      className="text-neon-green"
-                      initial={{ width: 0, opacity: 0 }}
-                      whileInView={{ width: "auto", opacity: 1 }}
-                      transition={{ delay: 0.7, duration: 0.8 }}
-                      viewport={{ once: true }}
-                    >
-                      $ luna.getStats()
-                    </motion.div>
-                    <motion.div 
-                      className="text-muted-foreground"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ delay: 1 }}
-                      viewport={{ once: true }}
-                    >
-                      → Experience: 3+ years
-                    </motion.div>
-                    <motion.div 
-                      className="text-muted-foreground"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ delay: 1.2 }}
-                      viewport={{ once: true }}
-                    >
-                      → Projects completed: 50+
-                    </motion.div>
-                    <motion.div 
-                      className="text-muted-foreground"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ delay: 1.4 }}
-                      viewport={{ once: true }}
-                    >
-                      → Coffee consumed: ∞
-                    </motion.div>
-                    <motion.div 
-                      className="text-primary"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ delay: 1.6 }}
-                      viewport={{ once: true }}
-                    >
-                      → Currently: Available for work!
-                    </motion.div>
-                  </div>
-                </motion.div>
-              </div>
-            </Card>
+            
           </motion.div>
 
           {/* Skills & Interests */}
