@@ -1,9 +1,8 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useRef, useState, useEffect } from 'react';
-import { Badge } from '@/components/ui/badge';
 import { ArrowDown, Sparkles, Zap } from 'lucide-react';
-import { Card } from './ui/card';
+
 
 interface HeroProps {
   onExplore: () => void;
@@ -34,11 +33,11 @@ export const Hero = ({ onExplore }: HeroProps) => {
   const { displayText } = useTypingAnimation(`> Frontend Developer • App Devoloper • grafic designer_`, 100);
   return (
     <section className="relative min-h-screen h-[140vh]  flex items-center justify-center overflow-hidden">
-      {/* Background gradient */}
+      
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background/90 to-primary/20" />
 
 
-      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto">
+      <div className="relative z-20 text-center mt-[-5rem] px-6 max-w-6xl mx-auto">
         <motion.div
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: 1, rotate: 0 }}

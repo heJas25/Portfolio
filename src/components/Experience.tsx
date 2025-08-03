@@ -46,11 +46,13 @@ const experiences = [
 
 export const Experience = () => {
   return (
-    <section className="py-20 px-6 relative overflow-hidden">
+    <section className="py-20 px-6 relative mt-[-2rem] overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-mesh opacity-30" />
       <div className="absolute inset-0 bg-noise opacity-20" />
-      
+      <h2 className="text-4xl text-center md:text-5xl font-bold mb-6">
+        <span className="text-gradient-cyber">Experience Journey</span>
+      </h2>
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -62,14 +64,14 @@ export const Experience = () => {
             Experience Journey
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            My professional adventure through the tech universe 🚀
+            My professional adventure through the tech universe 
           </p>
         </motion.div>
 
         <div className="relative">
           {/* Timeline Line */}
           <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-accent to-primary opacity-50" />
-          
+
           <div className="space-y-8">
             {experiences.map((exp, index) => (
               <motion.div
@@ -81,7 +83,7 @@ export const Experience = () => {
               >
                 {/* Timeline Dot */}
                 <div className="absolute left-6 w-4 h-4 bg-primary rounded-full border-4 border-background neon-glow z-10" />
-                
+
                 <Card className="ml-20 p-6 cyber-border bg-card/80 backdrop-blur-sm hover:scale-[1.02] transition-all duration-300">
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                     <div>
@@ -92,7 +94,7 @@ export const Experience = () => {
                         <ExternalLink className="w-3 h-3 opacity-60" />
                       </div>
                     </div>
-                    
+
                     <div className="flex flex-col md:items-end text-sm text-muted-foreground">
                       <div className="flex items-center gap-1 mb-1">
                         <Calendar className="w-3 h-3" />
@@ -104,9 +106,9 @@ export const Experience = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   <p className="text-muted-foreground mb-4">{exp.description}</p>
-                  
+
                   <div className="mb-4">
                     <h4 className="text-sm font-semibold mb-2 text-accent">Key Achievements:</h4>
                     <ul className="space-y-1">
@@ -118,7 +120,7 @@ export const Experience = () => {
                       ))}
                     </ul>
                   </div>
-                  
+
                   <div className="flex flex-wrap gap-2">
                     {exp.tech.map((tech, i) => (
                       <span
