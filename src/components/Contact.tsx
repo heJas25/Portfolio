@@ -3,22 +3,20 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { 
-  Mail, 
-  MessageSquare, 
-  Github, 
-  Twitter, 
-  Twitch, 
+import {
+  Mail,
+  Linkedin,
+  Github,
   MessageCircle,
   Send,
-  Zap
+  Zap,
 } from 'lucide-react';
 
 const socialLinks = [
-  { icon: Github, label: "GitHub", handle: "@luna-exe", color: "text-foreground" },
-  { icon: Twitter, label: "Twitter", handle: "@luna_codes", color: "text-cyan-400" },
-  { icon: Twitch, label: "Twitch", handle: "luna_streams", color: "text-purple-500" },
-  { icon: MessageCircle, label: "Discord", handle: "Luna#3142", color: "text-indigo-400" },
+  { icon: Github, label: "GitHub", handle: "@heyjas", color: "text-foreground" },
+  { icon: Linkedin, label: "LinkedIn", handle: "yasmine-harfouche", color: "text-blue-400" }, 
+  { icon: Mail, label: "Email", handle: "yasmineharfouche0@gmail.com", color: "text-pink-400" },
+  { icon: MessageCircle, label: "Discord", handle: "_0jas0_", color: "text-indigo-400" },
 ];
 
 export const Contact = () => {
@@ -60,16 +58,16 @@ export const Contact = () => {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2 text-primary">Name</label>
-                    <Input 
-                      placeholder="Your name" 
+                    <Input
+                      placeholder="Your name"
                       className="cyber-border bg-background/50"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2 text-primary">Email</label>
-                    <Input 
-                      type="email" 
-                      placeholder="your.email@example.com" 
+                    <Input
+                      type="email"
+                      placeholder="your.email@example.com"
                       className="cyber-border bg-background/50"
                     />
                   </div>
@@ -77,16 +75,16 @@ export const Contact = () => {
 
                 <div>
                   <label className="block text-sm font-medium mb-2 text-primary">Subject</label>
-                  <Input 
-                    placeholder="Let's collaborate!" 
+                  <Input
+                    placeholder="Let's collaborate!"
                     className="cyber-border bg-background/50"
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-2 text-primary">Message</label>
-                  <Textarea 
-                    placeholder="Tell me about your project ideas..." 
+                  <Textarea
+                    placeholder="Tell me about your project ideas..."
                     rows={6}
                     className="cyber-border bg-background/50 resize-none"
                   />
@@ -115,29 +113,7 @@ export const Contact = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            {/* Quick Contact */}
-            <Card className="cyber-border p-6">
-              <h3 className="text-xl font-semibold mb-4 text-gradient-primary flex items-center gap-2">
-                <Mail className="w-5 h-5" />
-                Quick Contact
-              </h3>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors cursor-pointer">
-                  <Mail className="w-5 h-5 text-primary" />
-                  <div>
-                    <div className="font-medium">Email</div>
-                    <div className="text-sm text-muted-foreground">luna@example.com</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors cursor-pointer">
-                  <MessageSquare className="w-5 h-5 text-accent" />
-                  <div>
-                    <div className="font-medium">Direct Message</div>
-                    <div className="text-sm text-muted-foreground">Available on all platforms</div>
-                  </div>
-                </div>
-              </div>
-            </Card>
+
 
             {/* Social Links */}
             <Card className="cyber-border p-6">
@@ -155,8 +131,8 @@ export const Contact = () => {
                       transition={{ delay: index * 0.1 }}
                       viewport={{ once: true }}
                     >
-                      <Button 
-                        variant="ghost" 
+                      <Button
+                        variant="ghost"
                         className="w-full justify-start gap-3 p-4 h-auto hover:neon-glow"
                       >
                         <Icon className={`w-5 h-5 ${social.color}`} />
@@ -206,7 +182,7 @@ export const Contact = () => {
               Ready to start your project?
             </h3>
             <p className="text-muted-foreground mb-6">
-              Whether it's a stunning website, an interactive 3D experience, or a complete digital transformation, 
+              Whether it's a stunning website, an interactive 3D experience, or a complete digital transformation,
               I'm here to bring your vision to life with cutting-edge technology and kawaii aesthetics.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
