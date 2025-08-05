@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -11,10 +12,11 @@ import {
   Send,
   Zap,
 } from 'lucide-react';
+import AnimatedCatIcon from './AnimatedCatIcon';
 
 const socialLinks = [
   { icon: Github, label: "GitHub", handle: "@heyjas", color: "text-foreground" },
-  { icon: Linkedin, label: "LinkedIn", handle: "yasmine-harfouche", color: "text-blue-400" }, 
+  { icon: Linkedin, label: "LinkedIn", handle: "yasmine-harfouche", color: "text-blue-400" },
   { icon: Mail, label: "Email", handle: "yasmineharfouche0@gmail.com", color: "text-pink-400" },
   { icon: MessageCircle, label: "Discord", handle: "_0jas0_", color: "text-indigo-400" },
 ];
@@ -198,6 +200,7 @@ export const Contact = () => {
           </Card>
         </motion.div>
       </div>
+      <AnimatedCatIcon />
     </section>
   );
 };

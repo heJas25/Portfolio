@@ -121,7 +121,7 @@ export const Projects = () => {
                       </Button>
                       <Button variant="cyber" size="sm" className="flex-1">
                         <ExternalLink className="w-4 h-4 mr-2" />
-                        Demo
+                        Demo(´｡• ᵕ •｡`) ♡
                       </Button>
                     </div>
                   </div>
