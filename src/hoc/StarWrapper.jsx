@@ -1,6 +1,7 @@
 import { styles } from "../styles";
 import { staggerContainer } from "../utils/motion";
 import React from "react";
+import { motion } from "framer-motion";
 const StarWrapper = (Component, idName) =>
     function HOC() {
         return (

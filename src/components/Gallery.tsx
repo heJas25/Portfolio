@@ -184,26 +184,7 @@ export const Gallery = () => {
           viewport={{ once: true }}
           className="mt-16"
         >
-          <Card className="cyber-border p-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-3xl font-bold text-gradient-primary mb-1">2.1K</div>
-                <div className="text-sm text-muted-foreground">Followers</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-gradient-secondary mb-1">156</div>
-                <div className="text-sm text-muted-foreground">Posts</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-gradient-accent mb-1">8.7K</div>
-                <div className="text-sm text-muted-foreground">Likes</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-gradient-cyber mb-1">42</div>
-                <div className="text-sm text-muted-foreground">Projects</div>
-              </div>
-            </div>
-          </Card>
+          
         </motion.div>
       </div>
     </section>

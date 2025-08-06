@@ -1,7 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import Tech from './Tech';
 import { Button } from '@/components/ui/button';
 import TechPlanets from './TechPlanets';
 import { Heart, Coffee, Gamepad2, Sparkles, Code2, Palette, Zap } from 'lucide-react';
@@ -175,7 +175,7 @@ export const About = () => {
               >
                 Tech Universe
               </motion.h4>
-              <TechPlanets />
+              <Tech />
             </Card>
            
 
